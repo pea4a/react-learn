@@ -5,7 +5,7 @@ const useStyles = createUseStyles({
         margin: '10px',
 
         "& .MuiOutlinedInput-input": {
-            color: 'red'
+            color: 'green'
         }
     },
 
