@@ -85,28 +85,28 @@ import "react-datepicker/dist/react-datepicker.css";
 
 // }
 
-const Task3 = () => {
-    const [firstName, setFirstName] = useState('')
-    const [secondName, setSecondName] = useState('')
-    const [thirdName, setThirdName] = useState('')
-    const [value, setValue] = useState('')
+// const Task3 = () => {
+//     const [firstName, setFirstName] = useState('')
+//     const [secondName, setSecondName] = useState('')
+//     const [thirdName, setThirdName] = useState('')
+//     const [value, setValue] = useState('')
 
-    const handleShower = (event) => {
-        event.preventDefault()
-        setValue(firstName + ' ' + secondName + ' ' + thirdName)
-    }
-    return (
-        <Box>
-            <form onSubmit={handleShower}>
-                <TextField onChange={(event) => setFirstName(event.target.value)} />
-                <TextField onChange={(event) => setSecondName(event.target.value)} />
-                <TextField onChange={(event) => setThirdName(event.target.value)} />
-                <Button type="submit" variant="contained">submit</Button>
-                <Typography>{value}</Typography>
-            </form>
-        </Box>
-    )
-}
+//     const handleShower = (event) => {
+//         event.preventDefault()
+//         setValue(firstName + ' ' + secondName + ' ' + thirdName)
+//     }
+//     return (
+//         <Box>
+//             <form onSubmit={handleShower}>
+//                 <TextField onChange={(event) => setFirstName(event.target.value)} />
+//                 <TextField onChange={(event) => setSecondName(event.target.value)} />
+//                 <TextField onChange={(event) => setThirdName(event.target.value)} />
+//                 <Button type="submit" variant="contained">submit</Button>
+//                 <Typography>{value}</Typography>
+//             </form>
+//         </Box>
+//     )
+// }
 
 
 // const Task3 = () => {
@@ -475,28 +475,28 @@ const Task3 = () => {
 
 // }
 
-// const Task3 = () => {
-//     const [startDate, setStartDate] = useState(new Date());
+const Task3 = () => {
+    const [startDate, setStartDate] = useState(new Date());
 
-//     return (
-//         <Box>
-//             <Typography>{
-//                 (startDate.getDay() === 1)
-//                     ? 'monday' :
-//                     (startDate.getDay() === 2)
-//                         ? 'tuesday' :
-//                         (startDate.getDay() === 3)
-//                             ? 'wednesday' :
-//                             (startDate.getDay() === 4)
-//                                 ? 'thursday' :
-//                                 (startDate.getDay() === 5)
-//                                     ? 'friday' :
-//                                     (startDate.getDay() === 6)
-//                                         ? 'saturday' :
-//                                         'sunday'}
-//             </Typography>
-//             <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
-//         </Box>
-//     );
-// }
+    return (
+        <Box>
+            <Typography>{
+                (startDate.getDay() === 1)
+                    ? 'monday' :
+                    (startDate.getDay() === 2)
+                        ? 'tuesday' :
+                        (startDate.getDay() === 3)
+                            ? 'wednesday' :
+                            (startDate.getDay() === 4)
+                                ? 'thursday' :
+                                (startDate.getDay() === 5)
+                                    ? 'friday' :
+                                    (startDate.getDay() === 6)
+                                        ? 'saturday' :
+                                        'sunday'}
+            </Typography>
+            <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+        </Box>
+    );
+}
 export default Task3
