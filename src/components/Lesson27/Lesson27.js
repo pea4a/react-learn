@@ -1,29 +1,26 @@
 import { Button, Typography } from "@mui/material"
 import { useState } from "react"
 
-
-
 const Lesson27 = () => {
     const [notes, setNotes] = useState([1, 2, 3, 4, 5])
 
     const remItem = (index) => {
         const copyNotes = [...notes];
-        setNotes([...copyNotes.slice(0, index),
-        ...copyNotes.slice(index + 1)]
-        )
+
+        copyNotes.splice(index, 1)
+
+        setNotes(copyNotes)
     }
 
     return (
         <div>
             {notes.map((note, index) =>
-
-                <div>
-                    <Typography key={index}>
+                <div key={index}>
+                    <Typography >
                         {note}
                     </Typography>
                     <Button onClick={() => { remItem(index) }}>remove</Button>
                 </div>
-
             )}
         </div>
     )
