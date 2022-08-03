@@ -33,18 +33,18 @@ import "react-datepicker/dist/react-datepicker.css";
 // }
 
 // const Task3 = () => {
-//     const [inputValue, setInputValue] = useState('')
+//     const [TextFieldValue, setTextFieldValue] = useState('')
 //     const [data, setData] = useState('')
 
 //     const onSubmit = (event) => {
 //         event.preventDefault()
-//         setText(inputValue)
+//         setText(TextFieldValue)
 //     }
 
 //     return (
 //         <Box>
 //             <form onSubmit={onSubmit}>
-//                 <TextField onChange={(event) => setInputValue(event.target.value)} />
+//                 <TextField onChange={(event) => setTextFieldValue(event.target.value)} />
 //                 <Button type='submit' variant="contained">submit</Button>
 //             </form>
 //             <Typography>{text}</Typography>
@@ -53,30 +53,30 @@ import "react-datepicker/dist/react-datepicker.css";
 // }
 
 // const Task3 = () => {
-//     const [inputNumber, setInputNumber] = useState({
+//     const [TextFieldNumber, setTextFieldNumber] = useState({
 //         fristNumber: '',
 //         secondNumber: '',
 //     })
 //     const [sum, setSum] = useState('')
 
-//     const handelInput = ({ target: { name, value } }) => {
-//         const copyInputNumber = { ...inputNumber }
+//     const handelTextField = ({ target: { name, value } }) => {
+//         const copyTextFieldNumber = { ...TextFieldNumber }
 
-//         copyInputNumber[name] = value
+//         copyTextFieldNumber[name] = value
 
-//         setInputNumber(copyInputNumber)
+//         setTextFieldNumber(copyTextFieldNumber)
 //     }
 
 //     const handleCalculator = (event) => {
 //         event.preventDefault()
-//         setSum(+inputNumber.fristNumber + +inputNumber.secondNumber)
+//         setSum(+TextFieldNumber.fristNumber + +TextFieldNumber.secondNumber)
 //     }
 
 //     return (
 //         <Box>
 //             <form onSubmit={handleCalculator}>
-//                 <TextField value={inputNumber.fristNumber} name="fristNumber" onChange={handelInput} />
-//                 <TextField value={inputNumber.secondNumber} name="secondNumber" onChange={handelInput} />
+//                 <TextField value={TextFieldNumber.fristNumber} name="fristNumber" onChange={handelTextField} />
+//                 <TextField value={TextFieldNumber.secondNumber} name="secondNumber" onChange={handelTextField} />
 //                 <Button type="submit" variant="contained">submit</Button>
 //                 <Typography>{sum}</Typography>
 //             </form>
@@ -85,28 +85,29 @@ import "react-datepicker/dist/react-datepicker.css";
 
 // }
 
-const Task3 = () => {
-    const [firstName, setFirstName] = useState('')
-    const [secondName, setSecondName] = useState('')
-    const [thirdName, setThirdName] = useState('')
-    const [value, setValue] = useState('')
+// const Task3 = () => {
+//     const [firstName, setFirstName] = useState('')
+//     const [secondName, setSecondName] = useState('')
+//     const [thirdName, setThirdName] = useState('')
+//     const [value, setValue] = useState('')
 
-    const handleShower = (event) => {
-        event.preventDefault()
-        setValue(firstName + ' ' + secondName + ' ' + thirdName)
-    }
-    return (
-        <Box>
-            <form onSubmit={handleShower}>
-                <TextField onChange={(event) => setFirstName(event.target.value)} />
-                <TextField onChange={(event) => setSecondName(event.target.value)} />
-                <TextField onChange={(event) => setThirdName(event.target.value)} />
-                <Button type="submit" variant="contained">submit</Button>
-                <Typography>{value}</Typography>
-            </form>
-        </Box>
-    )
-}
+//     const handleShower = (event) => {
+//         event.preventDefault()
+//         setValue(firstName + ' ' + secondName + ' ' + thirdName)
+//     }
+//     return (
+//         <Box>
+//             <form onSubmit={handleShower}>
+//                 <TextField onChange={(event) => setFirstName(event.target.value)} />
+//                 <TextField onChange={(event) => setSecondName(event.target.value)} />
+//                 <TextField onChange={(event) => setThirdName(event.target.value)} />
+//                 <Button type="submit" variant="contained">submit</Button>
+//                 <Typography>{value}</Typography>
+//             </form>
+//         </Box>
+//     )
+// }
+
 
 // const Task3 = () => {
 //     const [value, setValue] = useState()
@@ -155,20 +156,20 @@ const Task3 = () => {
 // const Task3 = () => {
 
 //     const [links, setLinks] = useState(hrefs)
-//     const [inputHref, setInputHref] = useState('')
-//     const [inputText, setInputText] = useState('')
+//     const [TextFieldHref, setTextFieldHref] = useState('')
+//     const [TextFieldText, setTextFieldText] = useState('')
 //     const [isTrue, setIsTrue] = useState(true)
 
 
 //     const addItem = (event) => {
-//         if (inputHref !== '' && inputText !== '') {
+//         if (TextFieldHref !== '' && TextFieldText !== '') {
 //             event.preventDefault()
-//             let href = inputHref + '.html'
-//             let text = inputText
+//             let href = TextFieldHref + '.html'
+//             let text = TextFieldText
 //             let newObj = { href, text }
 //             setLinks([...links, newObj])
-//             setInputHref('')
-//             setInputText('')
+//             setTextFieldHref('')
+//             setTextFieldText('')
 //             setIsTrue(true)
 //         }
 //         else {
@@ -180,8 +181,8 @@ const Task3 = () => {
 //     return (
 //         <Box>
 //             <form onSubmit={addItem}>
-//                 <TextField value={inputHref} onChange={(event) => setInputHref(event.target.value)} />
-//                 <TextField value={inputText} onChange={(event) => setInputText(event.target.value)} />
+//                 <TextField value={TextFieldHref} onChange={(event) => setTextFieldHref(event.target.value)} />
+//                 <TextField value={TextFieldText} onChange={(event) => setTextFieldText(event.target.value)} />
 //                 <Button variant="contained" type="submit">apply</Button>
 //                 <Typography>{isTrue ? '' : 'enter href and text'}</Typography>
 //                 <ul>
@@ -235,14 +236,14 @@ const Task3 = () => {
 // ]
 // const Task3 = () => {
 //     const [users, setUsers] = useState(data)
-//     const [inputName, setInputName] = useState('')
-//     const [inputAge, setInputAge] = useState('')
+//     const [TextFieldName, setTextFieldName] = useState('')
+//     const [TextFieldAge, setTextFieldAge] = useState('')
 //     const [state, setState] = useState(true)
 
 //     const newObj = () => {
-//         if (inputAge !== '' && inputAge > 0 && inputName !== '') {
-//             const name = inputName
-//             const age = inputAge
+//         if (TextFieldAge !== '' && TextFieldAge > 0 && TextFieldName !== '') {
+//             const name = TextFieldName
+//             const age = TextFieldAge
 //             const newObj = { name, age }
 //             setUsers([...users, newObj])
 //             console.log(newObj);
@@ -255,8 +256,8 @@ const Task3 = () => {
 //     return (
 //         <Box>
 //             <form>
-//                 <TextField onChange={(event) => setInputName(event.target.value)} />
-//                 <TextField type='number' onChange={(event) => setInputAge(+event.target.value)} />
+//                 <TextField onChange={(event) => setTextFieldName(event.target.value)} />
+//                 <TextField type='number' onChange={(event) => setTextFieldAge(+event.target.value)} />
 //                 <Button variant="contained" onClick={newObj}>add</Button>
 //                 {users.map((user, index) =>
 //                     <tr key={index}>
@@ -429,7 +430,7 @@ const Task3 = () => {
 // const Task3 = () => {
 //     const [value, setValue] = useState('')
 //     const [options, setOption] = useState(['first', 'second', 'third', 'fourth'])
-//     const [inputValue, setInputValue] = useState()
+//     const [TextFieldValue, setTextFieldValue] = useState()
 
 //     const handleChanger = (event) => {
 //         setValue(event.target.value)
@@ -437,15 +438,15 @@ const Task3 = () => {
 //     const handleAdder = (event) => {
 //         event.preventDefault()
 //         const copyOptions = options
-//         const newItem = inputValue
+//         const newItem = TextFieldValue
 //         copyOptions.push(newItem)
 //         setOption(copyOptions)
-//         setInputValue('')
+//         setTextFieldValue('')
 //     }
 //     return (
 //         <Box>
 //             <form onSubmit={handleAdder}>
-//                 <TextField value={inputValue} onChange={(event) => setInputValue(event.target.value)} /><br />
+//                 <TextField value={TextFieldValue} onChange={(event) => setTextFieldValue(event.target.value)} /><br />
 //                 <Button variant="contained" type='submit' >add</Button><br />
 //                 <Select value={value} onChange={handleChanger}>
 //                     {options.map((option, index) =>
@@ -498,4 +499,99 @@ const Task3 = () => {
 //         </Box>
 //     );
 // }
+const initNotes = [
+    {
+        id: 'GYi9G_uC4gBF1e2SixDvu',
+        prop1: 'value11',
+        prop2: 'value12',
+        prop3: 'value13',
+    },
+    {
+        id: 'IWSpfBPSV3SXgRF87uO74',
+        prop1: 'value21',
+        prop2: 'value22',
+        prop3: 'value23',
+    },
+    {
+        id: 'JAmjRlfQT8rLTm5tG2m1L',
+        prop1: 'value31',
+        prop2: 'value32',
+        prop3: 'value33',
+    },
+];
+
+const Task3 = () => {
+
+    const [notes, setNotes] = useState(initNotes);
+    const [obj, setObj] = useState({
+        id: '',
+        prop1: '',
+        prop2: '',
+        prop3: ''
+    })
+    const [editId, setEditId] = useState(null)
+
+
+    const getValue = (prop) => {
+        if (editId) {
+            return notes.reduce((res, note) => note.id === editId ? note[prop] : res, '');
+        } else {
+            return obj[prop]
+        }
+    }
+
+    const changeItem = (prop, event) => {
+        if (editId) {
+            setNotes(notes.map(note =>
+                note.id === editId ? { ...note, [prop]: event.target.value } : note
+            ));
+        } else {
+            setObj({ ...obj, [prop]: event.target.value });
+        }
+    }
+
+    const saveItem = () => {
+        if (editId) {
+            setEditId(null);
+        } else {
+            setNotes([...notes, obj]);
+            setObj({
+                id: '',
+                prop1: '',
+                prop2: '',
+                prop3: ''
+            });
+        }
+    }
+
+    return <div>
+        {notes.map(note => {
+            return <p key={note.id}>
+                <span>{note.prop1}</span>,
+                <span>{note.prop2}</span>,
+                <span>{note.prop3}</span>
+
+                <Button onClick={() => setEditId(note.id)}>edit</Button>
+            </p>
+        })}
+
+        <br />
+
+        <TextField
+            value={getValue('prop1')}
+            onChange={event => changeItem('prop1', event)}
+        />
+        <TextField
+            value={getValue('prop2')}
+            onChange={event => changeItem('prop2', event)}
+        />
+        <TextField
+            value={getValue('prop3')}
+            onChange={event => changeItem('prop3', event)}
+        />
+
+        <Button onClick={saveItem}>save</Button>
+    </div>;
+}
+
 export default Task3
