@@ -721,61 +721,267 @@ import "react-datepicker/dist/react-datepicker.css";
 //         </Box>
 //     )
 // }
+// const initNotes = [
+//     { text: 'note1', isEdit: false },
+//     { text: 'note2', isEdit: false },
+//     { text: 'note3', isEdit: false },
+// ]
+// const Task3 = () => {
+//     const [notes, setNotes] = useState(initNotes)
+//     const [editState, setEditState] = useState(false)
+
+//     const editor = () => {
+
+//     }
+
+//     const startEdit = (index) => {
+//         const copy = Object.assign([], notes)
+//         copy[index].isEdit = true
+//         setNotes(copy)
+//         console.log(editState);
+//     }
+//     const changeNote = (index, event) => {
+//         const copy = Object.assign([], notes);
+//         copy[index].text = event.target.value;
+//         setNotes(copy);
+//     }
+//     const endEdit = (index) => {
+//         const copy = Object.assign([], notes);
+//         copy[index].isEdit = false
+//         setNotes(copy)
+//     }
+//     return (
+//         <Box>
+//             {notes.map((note, index) => {
+//                 let elem
+//                 if (!note.isEdit) {
+
+//                     elem = <span>
+//                         {note.text}
+//                         <Button onClick={() => startEdit(index)}>{note.isEdit ? 'show' : 'edit'}</Button>
+//                     </span>
+
+//                 }
+//                 else {
+
+//                     elem = <Box><TextField
+//                         value={note.text}
+//                         onChange={event => changeNote(index, event)}
+
+//                     />
+//                         <Button onClick={() => endEdit(index)}>{note.isEdit ? 'show' : 'edit'}</Button>
+//                     </Box>
+//                 }
+//                 return <li key={index}>{elem}</li>
+
+//             })}
+//         </Box>
+//     )
+// }
 const initNotes = [
-    { text: 'note1', isEdit: false },
-    { text: 'note2', isEdit: false },
-    { text: 'note3', isEdit: false },
+    {
+        id: '1',
+        fields: [
+            {
+                name: 'prop1', value: 'value11',
+                isEdit: false
+            },
+            {
+                name: 'prop2', value: 'value12',
+                isEdit: false
+            },
+            {
+                name: 'prop3', value: 'value13',
+                isEdit: false
+            },
+        ]
+    },
+    {
+        id: '2',
+        fields: [
+            {
+                name: 'prop1', value: 'value21',
+                isEdit: false
+            },
+            {
+                name: 'prop2', value: 'value22',
+                isEdit: false
+            },
+            {
+                name: 'prop3', value: 'value23',
+                isEdit: false
+            },
+        ]
+    },
+    {
+        id: '3',
+        fields: [
+            {
+                name: 'prop1', value: 'value31',
+                isEdit: false
+            },
+            {
+                name: 'prop2', value: 'value32',
+                isEdit: false
+            },
+            {
+                name: 'prop3', value: 'value33',
+                isEdit: false
+            },
+        ]
+    },
 ]
+
 const Task3 = () => {
     const [notes, setNotes] = useState(initNotes)
-    const [editState, setEditState] = useState(false)
 
-    const editor = () => {
+    const startEdit = (id, name) => {
+        setNotes(notes.map(note => {
+            if (note.id === id) {
+                const fields = note.fields.map(field => {
+                    if (field.name === name) {
+                        return { ...field, isEdit: true }
 
+                    }
+                    else {
+                        return field
+
+                    }
+                })
+                return { id, fields }
+            }
+            else {
+                return note
+            }
+        }))
     }
 
-    const startEdit = (index) => {
-        const copy = Object.assign([], notes)
-        copy[index].isEdit = true
-        setNotes(copy)
-        console.log(editState);
+    const endEdit = (id, name) => {
+        setNotes(notes.map(note => {
+            if (note.id === id) {
+                const fields = note.fields.map(field => {
+                    if (field.name === name) {
+                        return { ...field, isEdit: false }
+
+                    }
+                    else {
+                        return field
+
+                    }
+                })
+                return { id, fields }
+            }
+            else {
+                return note
+            }
+        }))
     }
-    const changeNote = (index, event) => {
-        const copy = Object.assign([], notes);
-        copy[index].text = event.target.value;
-        setNotes(copy);
+
+    const changeCell = (id, name, event) => {
+        setNotes(notes.map(note => {
+            if (note.id === id) {
+                const fields = note.fields.map(field => {
+                    if (field.name === name) {
+                        return { ...field, value: event.target.value }
+
+                    }
+                    else {
+                        return field
+
+                    }
+                })
+                return { id, fields }
+            }
+            else {
+                return note
+            }
+        }))
     }
-    const endEdit = (index) => {
-        const copy = Object.assign([], notes);
-        copy[index].isEdit = false
-        setNotes(copy)
-    }
+
     return (
         <Box>
-            {notes.map((note, index) => {
-                let elem
-                if (!note.isEdit) {
-
-                    elem = <span>
-                        {note.text}
-                        <Button onClick={() => startEdit(index)}>{note.isEdit ? 'show' : 'edit'}</Button>
-                    </span>
-
-                }
-                else {
-
-                    elem = <Box><TextField
-                        value={note.text}
-                        onChange={event => changeNote(index, event)}
-
-                    />
-                        <Button onClick={() => endEdit(index)}>{note.isEdit ? 'show' : 'edit'}</Button>
-                    </Box>
-                }
-                return <li key={index}>{elem}</li>
-
+            {notes.map(note => {
+                const cells = note.fields.map(field => {
+                    let elem
+                    if (!field.isEdit) {
+                        elem = <span onClick={() => startEdit(note.id, field.name)}>
+                            {field.value}
+                        </span>
+                    }
+                    else {
+                        elem = <TextField
+                            value={field.value}
+                            onChange={(event) => changeCell(note.id, field.name, event)}
+                            onBlur={() => endEdit(note.id, field.name)}
+                        />
+                    }
+                    return <td key={field.name}>{elem}</td>
+                })
+                return <tr key={note.id}>{cells}</tr>
             })}
         </Box>
     )
 }
+// const startEdit = (id, name) => {
+//     setNotes(notes.map(note => {
+//         if (note.id === id) {
+//             const fields = note.fields.map(field => {
+//                 if (field.name === name) {
+//                     return { ...field, isEdit: true }
+
+//                 }
+//                 else {
+//                     return field
+
+//                 }
+//             })
+//             return { id, fields }
+//         }
+//         else {
+//             return note
+//         }
+//     }))
+// }
+
+// const endEdit = (id, name) => {
+//     setNotes(notes.map(note => {
+//         if (note.id === id) {
+//             const fields = note.fields.map(field => {
+//                 if (field.name === name) {
+//                     return { ...field, isEdit: false }
+
+//                 }
+//                 else {
+//                     return field
+
+//                 }
+//             })
+//             return { id, fields }
+//         }
+//         else {
+//             return note
+//         }
+//     }))
+// }
+
+// const changeCell = (id, name, event) => {
+//     setNotes(notes.map(note => {
+//         if (note.id === id) {
+//             const fields = note.fields.map(field => {
+//                 if (field.name === name) {
+//                     return { ...field, value: event.target.value }
+
+//                 }
+//                 else {
+//                     return field
+
+//                 }
+//             })
+//             return { id, fields }
+//         }
+//         else {
+//             return note
+//         }
+//     }))
+// }
 export default Task3
