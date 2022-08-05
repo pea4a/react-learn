@@ -499,99 +499,278 @@ import "react-datepicker/dist/react-datepicker.css";
 //         </Box>
 //     );
 // }
+// const initNotes = [
+//     {
+//         id: 'GYi9G_uC4gBF1e2SixDvu',
+//         prop1: 'value11',
+//         prop2: 'value12',
+//         prop3: 'value13',
+//     },
+//     {
+//         id: 'IWSpfBPSV3SXgRF87uO74',
+//         prop1: 'value21',
+//         prop2: 'value22',
+//         prop3: 'value23',
+//     },
+//     {
+//         id: 'JAmjRlfQT8rLTm5tG2m1L',
+//         prop1: 'value31',
+//         prop2: 'value32',
+//         prop3: 'value33',
+//     },
+// ];
+
+// const Task3 = () => {
+
+//     const [notes, setNotes] = useState(initNotes);
+//     const [obj, setObj] = useState({
+//         id: '',
+//         prop1: '',
+//         prop2: '',
+//         prop3: ''
+//     })
+//     const [editId, setEditId] = useState(null)
+
+
+//     const getValue = (prop) => {
+//         if (editId) {
+//             return notes.reduce((res, note) => note.id === editId ? note[prop] : res, '');
+//         } else {
+//             return obj[prop]
+//         }
+//     }
+
+//     const changeItem = (prop, event) => {
+//         if (editId) {
+//             setNotes(notes.map(note =>
+//                 note.id === editId ? { ...note, [prop]: event.target.value } : note
+//             ));
+//         } else {
+//             setObj({ ...obj, [prop]: event.target.value });
+//         }
+//     }
+
+//     const saveItem = () => {
+//         if (editId) {
+//             setEditId(null);
+//         } else {
+//             setNotes([...notes, obj]);
+//             setObj({
+//                 id: '',
+//                 prop1: '',
+//                 prop2: '',
+//                 prop3: ''
+//             });
+//         }
+//     }
+
+//     return <div>
+//         {notes.map(note => {
+//             return <p key={note.id}>
+//                 <span>{note.prop1}</span>,
+//                 <span>{note.prop2}</span>,
+//                 <span>{note.prop3}</span>
+
+//                 <Button onClick={() => setEditId(note.id)}>edit</Button>
+//             </p>
+//         })}
+
+//         <br />
+
+//         <TextField
+//             value={getValue('prop1')}
+//             onChange={event => changeItem('prop1', event)}
+//         />
+//         <TextField
+//             value={getValue('prop2')}
+//             onChange={event => changeItem('prop2', event)}
+//         />
+//         <TextField
+//             value={getValue('prop3')}
+//             onChange={event => changeItem('prop3', event)}
+//         />
+
+//         <Button onClick={saveItem}>save</Button>
+//     </div>;
+// }
+// TRAINING STATE
+
+// const Task3 = () => {
+//     const [visibleFirst, setVisibleFirst] = useState(false)
+//     const [visibleSecond, setVisibleSecond] = useState(false)
+//     const [visibleThird, setVisibleThird] = useState(false)
+
+//     let firstElem
+//     if (visibleFirst) {
+//         firstElem = <Typography>text1</Typography>
+//     }
+//     let secondElem
+//     if (visibleSecond) {
+//         secondElem = <Typography>text2</Typography>
+//     }
+//     let thirdElem
+//     if (visibleThird) {
+//         thirdElem = <Typography>text3</Typography>
+//     }
+//     return (
+//         <Box>
+//             <Button onClick={() => setVisibleFirst(!visibleFirst)}>{visibleFirst ? 'hide' : 'show'}</Button>
+//             <Button onClick={() => setVisibleSecond(!visibleSecond)}>{visibleSecond ? 'hide' : 'show'}</Button>
+//             <Button onClick={() => setVisibleThird(!visibleThird)}>{visibleThird ? 'hide' : 'show'}</Button>
+
+//             {firstElem}
+//             {secondElem}
+//             {thirdElem}
+//         </Box>
+//     )
+// }
+// const initProds = [
+//     {
+//         id: '1',
+//         name: 'prod1',
+//         cost: 'cost1',
+//         desc: 'long description 1',
+//         showDesc: false,
+//         comm: 'my super comment 1',
+//         showComm: false,
+//     },
+//     {
+//         id: '2',
+//         name: 'prod2',
+//         cost: 'cost2',
+//         desc: 'long description 2',
+//         showDesc: false,
+//         comm: 'my super comment 2',
+//         showComm: false,
+//     },
+//     {
+//         id: '3',
+//         name: 'prod3',
+//         cost: 'cost3',
+//         desc: 'long description 3',
+//         showDesc: false,
+//         comm: 'my super comment 3',
+//         showComm: false,
+//     },
+// ];
+// const Task3 = () => {
+//     const [prods, setProds] = useState(initProds)
+
+//     const showComm = (id) => {
+//         setProds(prods.map(prod => {
+//             if (prod.id === id) {
+//                 return { ...prod, showComm: !prod.showComm }
+//             }
+//             else {
+//                 return prod
+//             }
+
+//         }))
+//     }
+//     const showDesc = (id) => {
+//         setProds(prods.map(prod => {
+//             if (prod.id === id) {
+//                 return { ...prod, showDesc: !prod.showDesc }
+//             }
+//             else {
+//                 return prod
+//             }
+
+//         }))
+//     }
+//     return (
+//         <Box>
+//             {prods.map(prod =>
+//                 <Typography>
+//                     {prod.name}/{prod.cost}/
+//                     {prod.showComm ? prod.comm : ''}/
+//                     {prod.showDesc ? prod.desc : ''}/
+//                     {prod.showComm ? prod.comm : ''}
+
+//                     <Button onClick={() => showDesc(prod.id)}>{prod.showDesc ? 'hide desc' : 'show desc'}</Button>
+
+//                     < Button onClick={() => showComm(prod.id)}>{prod.showComm ? 'hide comm' : 'show comm'}</Button>
+
+
+//                 </Typography >
+//             )}
+//         </Box >
+//     )
+// }
+// const Task3 = () => {
+//     const [value, setValue] = useState('text')
+//     const [isEdit, setIsEdit] = useState(false)
+
+//     let elem
+//     if (isEdit) {
+//         elem = <TextField value={value}
+//             onChange={event => setValue(event.target.value)}
+//         />
+//     }
+//     else {
+//         elem = <span>{value}</span>
+//     }
+//     return (
+//         <Box>
+//             <Typography>
+//                 {elem}
+//                 <br />
+//                 <Button onClick={() => setIsEdit(true)}>edit</Button>
+//                 <Button onClick={() => setIsEdit(false)}>show</Button>
+//             </Typography>
+//         </Box>
+//     )
+// }
 const initNotes = [
-    {
-        id: 'GYi9G_uC4gBF1e2SixDvu',
-        prop1: 'value11',
-        prop2: 'value12',
-        prop3: 'value13',
-    },
-    {
-        id: 'IWSpfBPSV3SXgRF87uO74',
-        prop1: 'value21',
-        prop2: 'value22',
-        prop3: 'value23',
-    },
-    {
-        id: 'JAmjRlfQT8rLTm5tG2m1L',
-        prop1: 'value31',
-        prop2: 'value32',
-        prop3: 'value33',
-    },
-];
-
+    { text: 'note1', isEdit: false },
+    { text: 'note2', isEdit: false },
+    { text: 'note3', isEdit: false },
+]
 const Task3 = () => {
-
-    const [notes, setNotes] = useState(initNotes);
-    const [obj, setObj] = useState({
-        id: '',
-        prop1: '',
-        prop2: '',
-        prop3: ''
-    })
-    const [editId, setEditId] = useState(null)
+    const [notes, setNotes] = useState(initNotes)
+    const [editState, setEditState] = useState()
 
 
-    const getValue = (prop) => {
-        if (editId) {
-            return notes.reduce((res, note) => note.id === editId ? note[prop] : res, '');
-        } else {
-            return obj[prop]
-        }
+
+    const startEdit = (index) => {
+        const copy = Object.assign([], notes)
+        copy[index].isEdit = true
+        setNotes(copy)
+        console.log(editState);
     }
-
-    const changeItem = (prop, event) => {
-        if (editId) {
-            setNotes(notes.map(note =>
-                note.id === editId ? { ...note, [prop]: event.target.value } : note
-            ));
-        } else {
-            setObj({ ...obj, [prop]: event.target.value });
-        }
+    const changeNote = (index, event) => {
+        const copy = Object.assign([], notes);
+        copy[index].text = event.target.value;
+        setNotes(copy);
     }
-
-    const saveItem = () => {
-        if (editId) {
-            setEditId(null);
-        } else {
-            setNotes([...notes, obj]);
-            setObj({
-                id: '',
-                prop1: '',
-                prop2: '',
-                prop3: ''
-            });
-        }
+    const endEdit = (index) => {
+        const copy = Object.assign([], notes);
+        copy[index].isEdit = false
+        setNotes(copy)
     }
+    return (
+        <Box>
+            {notes.map((note, index) => {
+                let elem
+                if (!note.isEdit && !editState) {
 
-    return <div>
-        {notes.map(note => {
-            return <p key={note.id}>
-                <span>{note.prop1}</span>,
-                <span>{note.prop2}</span>,
-                <span>{note.prop3}</span>
+                    elem = <span onClick={() => startEdit(index)}>
+                        {note.text}
+                    </span>
 
-                <Button onClick={() => setEditId(note.id)}>edit</Button>
-            </p>
-        })}
+                }
+                else {
 
-        <br />
+                    elem = <TextField
+                        value={note.text}
+                        onChange={event => changeNote(index, event)}
+                        onBlur={() => endEdit(index)}
+                    />
+                }
+                return <li key={index}>{elem}<Button onClick={() => setEditState(note.isEdit)}>{note.isEdit ? 'show' : 'edit'}</Button></li>
 
-        <TextField
-            value={getValue('prop1')}
-            onChange={event => changeItem('prop1', event)}
-        />
-        <TextField
-            value={getValue('prop2')}
-            onChange={event => changeItem('prop2', event)}
-        />
-        <TextField
-            value={getValue('prop3')}
-            onChange={event => changeItem('prop3', event)}
-        />
-
-        <Button onClick={saveItem}>save</Button>
-    </div>;
+            })}
+        </Box>
+    )
 }
-
 export default Task3
