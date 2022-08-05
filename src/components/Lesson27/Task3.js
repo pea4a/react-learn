@@ -728,9 +728,11 @@ const initNotes = [
 ]
 const Task3 = () => {
     const [notes, setNotes] = useState(initNotes)
-    const [editState, setEditState] = useState()
+    const [editState, setEditState] = useState(false)
 
+    const editor = () => {
 
+    }
 
     const startEdit = (index) => {
         const copy = Object.assign([], notes)
@@ -752,22 +754,25 @@ const Task3 = () => {
         <Box>
             {notes.map((note, index) => {
                 let elem
-                if (!note.isEdit && !editState) {
+                if (!note.isEdit) {
 
-                    elem = <span onClick={() => startEdit(index)}>
+                    elem = <span>
                         {note.text}
+                        <Button onClick={() => startEdit(index)}>{note.isEdit ? 'show' : 'edit'}</Button>
                     </span>
 
                 }
                 else {
 
-                    elem = <TextField
+                    elem = <Box><TextField
                         value={note.text}
                         onChange={event => changeNote(index, event)}
-                        onBlur={() => endEdit(index)}
+
                     />
+                        <Button onClick={() => endEdit(index)}>{note.isEdit ? 'show' : 'edit'}</Button>
+                    </Box>
                 }
-                return <li key={index}>{elem}<Button onClick={() => setEditState(note.isEdit)}>{note.isEdit ? 'show' : 'edit'}</Button></li>
+                return <li key={index}>{elem}</li>
 
             })}
         </Box>
