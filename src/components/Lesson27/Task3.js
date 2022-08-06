@@ -835,55 +835,20 @@ const initNotes = [
 const Task3 = () => {
     const [notes, setNotes] = useState(initNotes)
 
-    const startEdit = (id, name) => {
+    const editor = (id, name, event, functionId) => {
         setNotes(notes.map(note => {
             if (note.id === id) {
                 const fields = note.fields.map(field => {
                     if (field.name === name) {
-                        return { ...field, isEdit: true }
-
-                    }
-                    else {
-                        return field
-
-                    }
-                })
-                return { id, fields }
-            }
-            else {
-                return note
-            }
-        }))
-    }
-
-    const endEdit = (id, name) => {
-        setNotes(notes.map(note => {
-            if (note.id === id) {
-                const fields = note.fields.map(field => {
-                    if (field.name === name) {
-                        return { ...field, isEdit: false }
-
-                    }
-                    else {
-                        return field
-
-                    }
-                })
-                return { id, fields }
-            }
-            else {
-                return note
-            }
-        }))
-    }
-
-    const changeCell = (id, name, event) => {
-        setNotes(notes.map(note => {
-            if (note.id === id) {
-                const fields = note.fields.map(field => {
-                    if (field.name === name) {
-                        return { ...field, value: event.target.value }
-
+                        if (functionId === 1) {
+                            return { ...field, isEdit: true }
+                        }
+                        else if (functionId === 2) {
+                            return { ...field, value: event.target.value }
+                        }
+                        else {
+                            return { ...field, isEdit: false }
+                        }
                     }
                     else {
                         return field
@@ -904,15 +869,15 @@ const Task3 = () => {
                 const cells = note.fields.map(field => {
                     let elem
                     if (!field.isEdit) {
-                        elem = <span onClick={() => startEdit(note.id, field.name)}>
+                        elem = <span onClick={(event) => editor(note.id, field.name, event, 1)}>
                             {field.value}
                         </span>
                     }
                     else {
                         elem = <TextField
                             value={field.value}
-                            onChange={(event) => changeCell(note.id, field.name, event)}
-                            onBlur={() => endEdit(note.id, field.name)}
+                            onChange={(event) => editor(note.id, field.name, event, 2)}
+                            onBlur={(event) => editor(note.id, field.name, event, 3)}
                         />
                     }
                     return <td key={field.name}>{elem}</td>
@@ -922,66 +887,5 @@ const Task3 = () => {
         </Box>
     )
 }
-// const startEdit = (id, name) => {
-//     setNotes(notes.map(note => {
-//         if (note.id === id) {
-//             const fields = note.fields.map(field => {
-//                 if (field.name === name) {
-//                     return { ...field, isEdit: true }
 
-//                 }
-//                 else {
-//                     return field
-
-//                 }
-//             })
-//             return { id, fields }
-//         }
-//         else {
-//             return note
-//         }
-//     }))
-// }
-
-// const endEdit = (id, name) => {
-//     setNotes(notes.map(note => {
-//         if (note.id === id) {
-//             const fields = note.fields.map(field => {
-//                 if (field.name === name) {
-//                     return { ...field, isEdit: false }
-
-//                 }
-//                 else {
-//                     return field
-
-//                 }
-//             })
-//             return { id, fields }
-//         }
-//         else {
-//             return note
-//         }
-//     }))
-// }
-
-// const changeCell = (id, name, event) => {
-//     setNotes(notes.map(note => {
-//         if (note.id === id) {
-//             const fields = note.fields.map(field => {
-//                 if (field.name === name) {
-//                     return { ...field, value: event.target.value }
-
-//                 }
-//                 else {
-//                     return field
-
-//                 }
-//             })
-//             return { id, fields }
-//         }
-//         else {
-//             return note
-//         }
-//     }))
-// }
 export default Task3
